@@ -22,7 +22,22 @@ public class MemberService {
      * 회원 가입
      */
     public Long join(Member member){
-        //같은 이름이 있는 중복 회원X
+        // 일반적인 코드로 시간 넣는 코드 -> 모든 메소드에 추가해야하기 때문에 효율성이 떨어지고 유지보수가 어려움
+        /*long start = System.currentTimeMillis();
+
+        try{
+            //같은 이름이 있는 중복 회원X
+            validateDuplicateMember(member);
+
+            memberRepository.save(member);
+            return member.getId();
+
+        }finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish-start;
+            System.out.println("join = " + timeMs + "ms");
+        }*/
+
         validateDuplicateMember(member);
 
         memberRepository.save(member);
